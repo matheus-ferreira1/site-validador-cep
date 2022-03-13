@@ -1,3 +1,5 @@
+
+
 function isNumber (numero) {
     return !isNaN(numero);
 }
@@ -15,7 +17,7 @@ function fillForm(endereco) {
 }
 
 async function pegaCep() {
-    const cep = document.getElementById('cep').value;
+    let cep = document.getElementById('cep').value;
     const url = `https://viacep.com.br/ws/${cep}/json/`
 
     if (cepValido(cep)) {
