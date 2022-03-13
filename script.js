@@ -1,50 +1,43 @@
-'use strict';
-
-const clearAll = () =>{
-    document.getElementById('endereco').value = '';
-    document.getElementById('bairro').value = '';
-    document.getElementById('cidade').value = '';
-    document.getElementById('estado').value = '';
+function isNumber (numero) {
+    return !isNaN(numero);
 }
 
-const limparFormulario = (endereco) =>{
-    document.getElementById('endereco').value = '';
-    document.getElementById('bairro').value = '';
-    document.getElementById('cidade').value = '';
-    document.getElementById('estado').value = '';
+function cepValido (cep) {
+    return cep.length == 8 && isNumber(cep)
 }
 
-
-const preencherFormulario = (endereco) =>{
+function fillForm(endereco) {
     document.getElementById('endereco').value = endereco.logradouro;
     document.getElementById('bairro').value = endereco.bairro;
     document.getElementById('cidade').value = endereco.localidade;
     document.getElementById('estado').value = endereco.uf;
+    document.getElementById('ddd').value = endereco.ddd;
 }
 
+async function pegaCep() {
+    const cep = document.getElementById('cep').value;
+    const url = `https://viacep.com.br/ws/${cep}/json/`
 
-const eNumero = (numero) => /^[0-9]+$/.test(numero);
-
-const cepValido = (cep) => cep.length == 8 && eNumero(cep); 
-
-const pesquisarCep = async() => {
-    limparFormulario();
-    
-    const cep = document.getElementById('cep').value.replace("-","");
-    const url = `https://viacep.com.br/ws/${cep}/json/`;
-    if (cepValido(cep)){
+    if (cepValido(cep)) {
         const dados = await fetch(url);
         const endereco = await dados.json();
-        if (endereco.hasOwnProperty('erro')){
-            document.getElementById('endereco').value = 'CEP não encontrado!';
-        }else {
-            preencherFormulario(endereco);
+        if (endereco.hasOwnProperty('erro')) {
+            alert('O CEP não foi encontrado')
+        } else {
+            //console.log(endereco)
+            fillForm(endereco)
         }
-    }else{
-        document.getElementById('endereco').value = 'CEP incorreto!';
+    } else {
+        alert('O CEP está incorreto')
     }
-     
 }
 
-document.getElementById('btn-save').addEventListener('click', pesquisarCep);
-document.getElementById('btn-clear').addEventListener('click', clearAll);
+function clearAll() {
+    document.getElementById('cep').value = '';
+    document.getElementById('endereco').value = '';
+    document.getElementById('bairro').value = '';
+    document.getElementById('cidade').value = '';
+    document.getElementById('estado').value = '';
+    document.getElementById('ddd').value = '';
+}
+
