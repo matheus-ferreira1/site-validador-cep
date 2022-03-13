@@ -1,6 +1,6 @@
 'use strict';
 
-const clearAll = (endereco) =>{
+const clearAll = () =>{
     document.getElementById('endereco').value = '';
     document.getElementById('bairro').value = '';
     document.getElementById('cidade').value = '';
