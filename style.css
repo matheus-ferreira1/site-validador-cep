@@ -31,22 +31,18 @@ body {
 
 form .row {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-    
+    flex-direction: column;
+    gap: 10px;
 }
 
-.first-row, .second-row, .third-row {
+.my-row {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 5px;
+    gap: 10px;
 }
 
-.upper-box {
-    width: 257px;
+.my-row  input {
+    padding: 10px 15px;
 }
 
 #btn-clear, #btn-save {
@@ -65,7 +61,8 @@ form .row {
 }
 
 #btn-clear:hover, #btn-save:hover {
-    transform: scale(1.1, 1.1)
+    transform: scale(1.1, 1.1);
+    cursor: pointer;
 }
 
 #btn-save {
