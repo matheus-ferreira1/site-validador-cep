@@ -1,22 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <title>Validador de CEP</title>
 </head>
 <body>
-    <h2>digite o cep sem -</h2>
-    <input type="number" placeholder="cep" id="cep">
-    <input type="button" value="enviar" id="send" onclick="pegaCep()"> 
-    <input type="button" value="limpar" id="clear" onclick="clearAll()"><br>
+    <div class="container">
+        <h2>Digite o CEP</h2>
+        <input type="text" id="cep" required autofocus>
+        <div class="buttons">
+            <input type="button" value="enviar" id="send" onclick="pegaCep()"> 
+            <input type="button" value="limpar" id="clear" onclick="clearAll()">
+        </div>
+        <div class="row">
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" readonly> 
+        </div>
+        <div class="row">
+            <label for="bairro">Bairro</label>
+            <input type="text" id="bairro" readonly> 
+        </div>
+        <div class="row">
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" readonly>
+        </div>
+        <div class="row">
+            <label for="estado">Estado</label>
+            <input type="text" id="estado" readonly> 
+        </div>
+        <div class="row">
+            <label for="ddd">DDD</label>
+            <input type="text" id="ddd" readonly> 
+        </div>
+        
+    </div>
 
-    <input type="text" placeholder="endereço" id="endereco" readonly> <br>
-    <input type="text" placeholder="bairro" id="bairro" readonly> <br>
-    <input type="text" placeholder="cidade" id="cidade" readonly> <br>
-    <input type="text" placeholder="estado" id="estado" readonly> <br>
-    <input type="text" placeholder="DDD" id="ddd" readonly> <br>
+    <footer>
+        <h6>Desenvolvido por Matheus Ferreira - 2022</h6>
+    </footer>
 
     <script src="script.js"></script>
 </body>
